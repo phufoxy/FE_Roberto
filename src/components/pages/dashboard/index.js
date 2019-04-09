@@ -1,0 +1,14 @@
+import HomePage from './home/HomePage';
+import PlacePage from './place/PlacePage';
+import PlaceDetailPage from './place/PlaceDetailPage';
+import HousePage from './house/HousePage';
+import HouseDetailPage from './house/HouseDetailPage';
+import RestaurantPage from './restaurants/RestaurantPage';
+import RestaurantDetailPage from './restaurants/RestaurantDetailPage';
+import TourPage from './tour/TourPage';
+import TourDetailPage from './tour/TourDetailPage';
+import SliderPage from './slider/SliderPage';
+import BlogPage from './blog/BlogPage';
+import BlogDetailPage from './blog/details/BlogDetailPage';
+import TourImages from './tour/TourImages';
+export { TourImages, BlogDetailPage, BlogPage, SliderPage, TourDetailPage, TourPage, RestaurantDetailPage, HomePage, PlacePage, PlaceDetailPage, HousePage, HouseDetailPage, RestaurantPage };
