@@ -14,7 +14,7 @@ class BlogItemComponent extends Component {
         var date = dateFormat(this.props.data.date, "dd-mm-yyyy");
         return (
             <div className="b-blog-item">
-                <div className="b-images" style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                <div className="b-images" style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
                     <div className="b-likes">
                         <button className="b-btn" onClick={this.onAddLike}>
                             <i className="fas fa-thumbs-up"></i>

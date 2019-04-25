@@ -27,7 +27,7 @@ class BlogComponent extends Component {
                             <div className="col-lg-4" key={data.id}>
                                 <div className="b-blog-item wow fadeInUp">
                                     <div className="b-images">
-                                        <img src={`http://127.0.0.1:8000${data.images}`} alt="BG" />
+                                        <img src={`https://fotour.herokuapp.com${data.images}`} alt="BG" />
                                     </div>
                                     <div className="b-content">
                                         <div className="b-time">

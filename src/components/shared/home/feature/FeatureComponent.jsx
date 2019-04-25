@@ -20,7 +20,7 @@ class FeatureComponent extends Component {
             <Slider {...settings} className="b-slider-feature">
                 {this.props.data.map(data => (
                     <div className="b-slider-item" key={data.id} >
-                        <div className="b-overload" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
+                        <div className="b-overload" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.images})` }}>
                             <div className="b-content">
                                 <div className="b-overlay">
                                     <div className="b-info">

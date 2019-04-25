@@ -24,7 +24,7 @@ class RecentComponent extends Component {
                                 {this.props.data.map(data => (
                                     <div className="b-item" key={data.id}>
                                         <Link to={'/tour/' + data.id} className="b-link" onClick={this.onViews.bind(this, data.reviews, data.id)}>
-                                            <div className="b-images" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
+                                            <div className="b-images" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.images})` }}>
                                             </div>
                                             <div className="b-content">
                                                 <h5 className="b-text-time">
@@ -45,7 +45,7 @@ class RecentComponent extends Component {
                     return (
                         <div className="b-item">
                             <Link to={'/blog/' + this.props.data.id} onClick={this.onViewsBlog.bind(this, this.props.data.reviews, this.props.data.id)} className="b-link">
-                                <div className="b-images" style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                                <div className="b-images" style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
                                 </div>
                                 <div className="b-content">
                                     <h5 className="b-text-time">

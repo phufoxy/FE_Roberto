@@ -213,7 +213,7 @@ class TourDetailPage extends Component {
                     <MenuLayout></MenuLayout>
                     <main className="b-page-main">
 
-                        <Parallax bgImage={(`http://127.0.0.1:8000${this.props.data.images}`)} strength={500}>
+                        <Parallax bgImage={(`https://fotour.herokuapp.com${this.props.data.images}`)} strength={500}>
                             <section className="b-page-hero" >
                                 <div className="b-block">
                                     <div className="b-block-left">

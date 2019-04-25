@@ -32,7 +32,7 @@ export const REQUEST_ADD_LIKES = "REQUEST_ADD_LIKES";
 export const REQUEST_ADD_COMMENT = "REQUEST_ADD_COMMENT";
 
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

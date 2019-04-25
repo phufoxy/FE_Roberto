@@ -15,7 +15,7 @@ export const REQUEST_GET_USER_ID = "REQUEST_GET_USER_ID";
 export const REQUEST_UPDATE_USER_ID = "REQUEST_GET_USER_ID";
 
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.info(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

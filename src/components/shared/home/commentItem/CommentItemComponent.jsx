@@ -28,7 +28,7 @@ class CommentItemComponent extends Component {
                                     <div className="b-comment-item" key={data.id}>
                                         <div className="b-comment-main">
                                             <div className="b-images">
-                                                <div className="b-icon" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.avatar})` }}>
+                                                <div className="b-icon" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.avatar})` }}>
                                                 </div>
                                             </div>
                                             <div className="b-content">
@@ -75,7 +75,7 @@ class CommentItemComponent extends Component {
                                     <div className="b-block-item" key={data.id}>
 
                                         <div className="b-images">
-                                            <div className="b-icon" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.avatar})` }}>
+                                            <div className="b-icon" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.avatar})` }}>
                                             </div>
                                         </div>
                                         <div className="b-content">

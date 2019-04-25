@@ -28,7 +28,7 @@ class DetailComponent extends Component {
                     </div>
                     <div className="b-block">
                         <div className="b-images"
-                            style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                            style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
 
                         </div>
                         <div className="b-header">
@@ -100,7 +100,7 @@ class DetailComponent extends Component {
                             </div>
                             <div className="b-gallery-main">
                                 <div className="b-item"
-                                    style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                                    style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
                                     <div className="b-overlay">
 
                                     </div>

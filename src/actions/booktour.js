@@ -18,7 +18,7 @@ export const REQUEST_GET_ACOUNT_COMMENT = "REQUEST_GET_ACOUNT_COMMENT";
 // home
 export const REQUEST_BOOK_TOUR_HOME = "REQUEST_BOOK_TOUR_HOME";
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

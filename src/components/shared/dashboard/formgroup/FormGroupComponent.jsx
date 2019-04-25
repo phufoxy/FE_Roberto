@@ -153,7 +153,7 @@ class FormGroupComponent extends Component {
         formData.append('images', file);
         return axios.request({
             method: 'POST',
-            url: `http://127.0.0.1:8000/api/admin/image/`,
+            url: `https://fotour.herokuapp.com/api/admin/image/`,
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',
@@ -164,7 +164,7 @@ class FormGroupComponent extends Component {
             if (response && response.data) {
                 return new Promise(
                     (resolve, reject) => {
-                        resolve({ data: { link: `http://127.0.0.1:8000${response.data.images}` } });
+                        resolve({ data: { link: `https://fotour.herokuapp.com${response.data.images}` } });
                     }
                 );
             }

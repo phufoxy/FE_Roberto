@@ -39,7 +39,7 @@ class CardResposComponent extends Component {
                         <div className="col-lg-4 col-md-4">
                             <div className="b-card wow fadeInDown">
                                 <div className="b-header" style={{
-                                    backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                    backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                 }}>
                                     <div className="b-overlay">
                                         <h2 className="b-text-title">
@@ -77,7 +77,7 @@ class CardResposComponent extends Component {
                                 </div>
                                 <div className="b-icon"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                        backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                     }}>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@ class CardResposComponent extends Component {
                         <div className="col-lg-4 col-md-4">
                             <div className="b-card wow fadeInDown">
                                 <div className="b-header" style={{
-                                    backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                    backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                 }}>
                                     <div className="b-overlay">
                                         <h2 className="b-text-title">
@@ -112,7 +112,7 @@ class CardResposComponent extends Component {
                                 </div>
                                 <div className="b-icon"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                        backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                     }}>
                                 </div>
                             </div>
@@ -123,7 +123,7 @@ class CardResposComponent extends Component {
                         <div className="col-lg-4 col-md-4">
                             <div className="b-card wow fadeInDown">
                                 <div className="b-header" style={{
-                                    backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                    backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                 }}>
                                     <div className="b-overlay">
                                         <h2 className="b-text-title">
@@ -161,7 +161,7 @@ class CardResposComponent extends Component {
                                 </div>
                                 <div className="b-icon"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                        backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                     }}>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ class CardResposComponent extends Component {
                         <div className="col-lg-4 col-md-4">
                             <div className="b-card wow fadeInDown">
                                 <div className="b-header" style={{
-                                    backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                    backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                 }}>
                                     <div className="b-overlay">
                                         <h2 className="b-text-title">
@@ -200,7 +200,7 @@ class CardResposComponent extends Component {
                                 </div>
                                 <div className="b-icon"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                        backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                     }}>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@ class CardResposComponent extends Component {
                         <div className="col-lg-4 col-md-4">
                             <div className="b-card wow fadeInDown">
                                 <div className="b-header" style={{
-                                    backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                    backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                 }}>
                                     <div className="b-overlay">
                                         <h2 className="b-text-title">
@@ -246,7 +246,7 @@ class CardResposComponent extends Component {
                                 </div>
                                 <div className="b-icon"
                                     style={{
-                                        backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})`
+                                        backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})`
                                     }}>
                                 </div>
                             </div>

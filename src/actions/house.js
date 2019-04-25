@@ -10,7 +10,7 @@ export const REQUEST_DELETE_HOUSE = "REQUEST_DELETE_HOUSE";
 export const REQUEST_UPDATE_HOUSE = "REQUEST_UPDATE_HOUSE";
 export const REQUEST_GET_DETAIL_HOUSE = "REQUEST_GET_DETAIL_HOUSE";
 export const REQUEST_COUNT_HOUSE = "REQUEST_COUNT_HOUSE";
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.info(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

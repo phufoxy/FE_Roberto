@@ -69,7 +69,7 @@ class BlogDetailPage extends Component {
                                     <div className="col-lg-8">
                                         <div className="b-blog-detail">
                                             <div className="b-blog-content">
-                                                <div className="b-images" style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                                                <div className="b-images" style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
                                                 </div>
                                                 <div className="b-content">
                                                     {body()}

@@ -10,7 +10,7 @@ export const REQUEST_DELETE_SLIDER = "REQUEST_DELETE_SLIDER";
 export const REQUEST_ADD_SLIDER = "REQUEST_ADD_SLIDER";
 export const REQUEST_UPDATE_SLIDER = "REQUEST_UPDATE_SLIDER";
 
-const API_URL = "http://127.0.0.1:8000/api/";
+const API_URL = "https://fotour.herokuapp.com/api/";
 function noteDelete(id) {
     toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

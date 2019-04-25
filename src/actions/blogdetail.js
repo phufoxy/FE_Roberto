@@ -13,7 +13,7 @@ export const REQUEST_GET_DETAIL_PLACE = "REQUEST_GET_DETAIL_PLACE";
 export const REQUEST_COUNT_PLACE = "REQUEST_COUNT_PLACE";
 export const REQUEST_GET_HOME_BLOG = "REQUEST_GET_HOME_BLOG";
 export const REQUEST_GET_HOME_DETAILS = "REQUEST_GET_HOME_DETAILS";
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

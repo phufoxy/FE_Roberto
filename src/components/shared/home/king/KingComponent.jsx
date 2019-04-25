@@ -20,7 +20,7 @@ class KingComponent extends Component {
                         this.props.data.map(data => (
                             <div className="b-slider-item" key={data.id}>
                                 <div className="b-block">
-                                    <div className="b-block-left" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
+                                    <div className="b-block-left" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.images})` }}>
                                     </div>
                                     <div className="b-block-right">
                                         <div className="b-content ">

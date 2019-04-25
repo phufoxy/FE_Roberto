@@ -32,7 +32,7 @@ export const REQUEST_GET_TOUR_TOP_REVIEWS = "REQUEST_GET_TOUR_TOP_REVIEWS";
 export const REQUEST_ADD_COMMENT_TOUR = "REQUEST_ADD_COMMENT_TOUR";
 export const REQUEST_ADD_NEW_TOUR = "REQUEST_ADD_NEW_TOUR";
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

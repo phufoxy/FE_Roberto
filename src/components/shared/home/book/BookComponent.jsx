@@ -112,7 +112,7 @@ class BookComponent extends Component {
                     return (
                         <div className="b-block-top">
                             <div className="b-block-images">
-                                <div className="b-images" style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                                <div className="b-images" style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
                                 </div>
                                 <div className="b-price">
                                     <div className="b-day">

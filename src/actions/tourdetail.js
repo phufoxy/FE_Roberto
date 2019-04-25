@@ -9,7 +9,7 @@ export const REQUEST_GET_TOUR_DETAIL = 'REQUEST_GET_TOUR_DETAIL';
 export const REQUEST_DELETE_TOUR_DETAIL = 'REQUEST_DELETE_TOUR_DETAIL';
 export const REQUEST_ADD_TOUR_DETAIL = 'REQUEST_ADD_TOUR_DETAIL';
 export const REQUEST_UPDATE_TOUR_DETAIL = 'REQUEST_UPDATE_TOUR_DETAIL';
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

@@ -14,7 +14,7 @@ export const REQUEST_CHECK_IS_STAFF = "REQUEST_CHECK_IS_STAFF";
 export const REQUEST_FORGOT_PASSWORD = "REQUEST_FORGOT_PASSWORD";
 export const REQUEST_LOGIN_FACEBOOK = "REQUEST_LOGIN_FACEBOOK";
 
-const API_URL = "http://127.0.0.1:8000/api/";
+const API_URL = "https://fotour.herokuapp.com/api/";
 function LoginError(user) {
     toast.info(`Login Faile ${user} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,

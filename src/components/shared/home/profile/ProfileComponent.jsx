@@ -17,7 +17,7 @@ class ProfileComponent extends Component {
                 <div className="container">
                     <div className="b-heading">
                         <div className="b-block-left">
-                            <div className="b-images" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.avatar})` }}>
+                            <div className="b-images" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.avatar})` }}>
                                 <label className="b-btn text-center" htmlFor="avatar">
                                     <i className="fas fa-camera-retro" />
                                     Cập Nhật

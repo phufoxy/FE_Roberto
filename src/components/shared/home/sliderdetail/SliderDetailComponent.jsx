@@ -33,7 +33,7 @@ class SliderDetailComponent extends Component {
 
                     {this.props.data.map(data => (
                         <div className="b-slider-item" key={data.id}>
-                            <div className="b-overload" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
+                            <div className="b-overload" style={{ backgroundImage: `url(https://fotour.herokuapp.com${data.images})` }}>
                                 <div className="b-likes">
                                     <button className="b-btn" onClick={this.onClick}>
                                         <i className="fas fa-thumbs-up"></i>
@@ -53,7 +53,7 @@ class SliderDetailComponent extends Component {
                     focusOnSelect={true}>
                     {this.props.data.map(data => (
                         <div className="b-item" key={data.id}>
-                            <img src={`http://127.0.0.1:8000${data.images}`} alt="Images" width="100%" />
+                            <img src={`https://fotour.herokuapp.com${data.images}`} alt="Images" width="100%" />
                         </div>
                     ))}
                 </Slider>

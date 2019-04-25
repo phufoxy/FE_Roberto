@@ -14,7 +14,7 @@ class TourItem extends Component {
             <div className="b-rooms-item wow fadeInUp">
                 <div
                     className="b-images"
-                    style={{ backgroundImage: `url(http://127.0.0.1:8000${this.props.data.images})` }}>
+                    style={{ backgroundImage: `url(https://fotour.herokuapp.com${this.props.data.images})` }}>
                     <div className="b-likes">
                         <button className="b-btn" onClick={this.onClick.bind(this, this.props.data.id)}>
                             <i className="fas fa-thumbs-up"></i>

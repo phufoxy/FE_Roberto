@@ -11,7 +11,7 @@ export const REQUEST_ADD_RESTAURANT = 'REQUEST_ADD_RESTAURANT';
 export const REQUEST_UPDATE_RESTAURANT = 'REQUEST_UPDATE_RESTAURANT';
 export const REQUEST_COUNT_RESTAURANT = 'REQUEST_COUNT_RESTAURANT';
 
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = "https://fotour.herokuapp.com/api";
 function noteDelete(id) {
     toast.info(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
