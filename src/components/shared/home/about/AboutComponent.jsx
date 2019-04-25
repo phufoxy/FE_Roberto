@@ -9,17 +9,16 @@ class AboutComponent extends Component {
                         <div className="col-lg-6">
                             <div className="b-about wow fadeInUp">
                                 <h3 className="b-text-name">
-                                    ABOUT US
-                    </h3>
+                                    GIỚI THIỆU VỀ CHÚNG TÔI
+                                    </h3>
                                 <h2 className="b-text-title">
-                                    Welcome To Roberto Hotel Luxury
-                    </h2>
+                                    XIN CHÀO, Chúng tôi là Roberto
+                                    </h2>
                                 <p className="b-text-norm">
-                                    With over 340 hotels worldwide, NH Hotel Group offers a wide variety of hotels catering for a perfect
-                                    stay no matter where your destination.
-                    </p>
+                                    Chúng tôi là trang web chuyên cung cấp tour du lịch và đặt tour.Trang web chúng tôi đã hoạt động được hơn 1 năm. Và được người dùng tin cậy.
+                                    </p>
                                 <p className="b-text-norm">
-                                    Manager: <span className="is-current"> Michen Taylor </span>
+                                    Người Sáng Lập: <span className="is-current"> Trần Văn Phú </span>
                                 </p>
                             </div>
                         </div>

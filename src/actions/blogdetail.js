@@ -15,17 +15,24 @@ export const REQUEST_GET_HOME_BLOG = "REQUEST_GET_HOME_BLOG";
 export const REQUEST_GET_HOME_DETAILS = "REQUEST_GET_HOME_DETAILS";
 const API_URL = "http://127.0.0.1:8000/api";
 function noteDelete(id) {
-    toast.info(`Delete Success ${id} !`, {
+    toast.warning(`Delete Success ${id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
-        className: 'toast-success'
+        className: 'toast-success-delete'
     });
 };
 function noteAdd(param, data) {
-    toast.info(`${param} Success  ${data.title} !`, {
+    toast.success(`${param} Success  ${data.title} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         className: 'toast-success'
     });
 };
+function noteError(param, data) {
+    toast.error(`${param} Error  ${data} !`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'toast-success'
+    });
+};
+
 export function requestGetBlogDetail() {
     return (dispatch) => {
         dispatch(requestLoading());
@@ -92,13 +99,13 @@ export function requestAddBlogDetails(data) {
                 payload: response.data
             })
         }).catch(function (error) {
-            console.log(error);
+            noteError(error);
             dispatch(requestRejected(error));
 
         })
     }
 }
-export function requestUpdateBlog(data) {
+export function requestUpdateBlogDetails(data) {
     let formData = new FormData();
     formData.append('blog', data.blog);
     formData.append('title', data.title);

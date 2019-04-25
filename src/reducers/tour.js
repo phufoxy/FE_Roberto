@@ -1,4 +1,4 @@
-import { REQUEST_GET_TOUR__DETAILS_HOME, REQUEST_UPDATE_TOUR_IMAGE, REQUEST_ADD_TOUR_IMAGE, REQUEST_DELETE_TOUR_IMAGES, REQUEST_GET_TOUR_IMAGES, REQUEST_GET_TOUR_HOME, REQUEST_GET_SLIDER_BANNER, REQUEST_GET_DETAIL_TOUR, REQUEST_DELETE_TOUR, REQUEST_LOADING, REQUEST_REJECTED, REQUEST_GET_TOUR, REQUEST_ADD_TOUR, REQUEST_UPDATE_TOUR } from '../actions/tour';
+import { REQUEST_ADD_NEW_TOUR, REQUEST_GET_TOUR_TOP_REVIEWS, REQUEST_GET_TOUR_SALE, REQUEST_GET_TOUR_LIKES, REQUEST_GET_TOUR_BOOK_COUNT, REQUEST_GET_TOUR_COUNT, REQUEST_GET_TOUR_FILTER, REQUEST_GET_TOUR_TOP_PRICE, REQUEST_GET_TOUR__DETAILS_HOME, REQUEST_UPDATE_TOUR_IMAGE, REQUEST_ADD_TOUR_IMAGE, REQUEST_DELETE_TOUR_IMAGES, REQUEST_GET_TOUR_IMAGES, REQUEST_GET_TOUR_HOME, REQUEST_GET_SLIDER_BANNER, REQUEST_GET_DETAIL_TOUR, REQUEST_DELETE_TOUR, REQUEST_LOADING, REQUEST_REJECTED, REQUEST_GET_TOUR, REQUEST_ADD_TOUR, REQUEST_UPDATE_TOUR } from '../actions/tour';
 const INITIAL_STATE = {
     all: [],
     fetching: false,
@@ -6,9 +6,16 @@ const INITIAL_STATE = {
     error: null,
     detail: [],
     count: 0,
+    countBook: 0,
     slider: [],
     tour: [],
-    images: []
+    images: [],
+    tourPrice: [],
+    filter: [],
+    likes: [],
+    sale: [],
+    reviews: [],
+    tournew: []
 }
 export default function (state = INITIAL_STATE, action = {}) {
     switch (action.type) {
@@ -78,6 +85,54 @@ export default function (state = INITIAL_STATE, action = {}) {
         case REQUEST_GET_TOUR__DETAILS_HOME:
             return Object.assign({}, state, {
                 tour: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_TOP_PRICE:
+            return Object.assign({}, state, {
+                tourPrice: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_FILTER:
+            return Object.assign({}, state, {
+                filter: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_COUNT:
+            return Object.assign({}, state, {
+                count: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_BOOK_COUNT:
+            return Object.assign({}, state, {
+                countBook: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_LIKES:
+            return Object.assign({}, state, {
+                likes: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_SALE:
+            return Object.assign({}, state, {
+                sale: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_GET_TOUR_TOP_REVIEWS:
+            return Object.assign({}, state, {
+                reviews: action.payload,
+                fetching: INITIAL_STATE.fetching,
+                fetched: true
+            })
+        case REQUEST_ADD_NEW_TOUR:
+            return Object.assign({}, state, {
+                tournew: action.payload,
                 fetching: INITIAL_STATE.fetching,
                 fetched: true
             })

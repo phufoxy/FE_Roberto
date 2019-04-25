@@ -15,6 +15,9 @@ class SliderDetailComponent extends Component {
             nav2: this.slider2
         });
     }
+    onClick = () => {
+        this.props.onAddLike();
+    }
     render() {
         const settings = {
             infinite: true,
@@ -27,9 +30,15 @@ class SliderDetailComponent extends Component {
         return (
             <div className="b-group-images">
                 <Slider {...settings} className="b-slider-images" asNavFor={this.state.nav2} ref={slider => (this.slider1 = slider)}>
+
                     {this.props.data.map(data => (
                         <div className="b-slider-item" key={data.id}>
                             <div className="b-overload" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
+                                <div className="b-likes">
+                                    <button className="b-btn" onClick={this.onClick}>
+                                        <i className="fas fa-thumbs-up"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     ))}

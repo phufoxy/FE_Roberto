@@ -1,188 +1,96 @@
 import React, { Component } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
+import { requestLogout } from '../../../../actions/login';
+import { connect } from 'react-redux';
 class HeaderLayout extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            style: {
-                backgroundImage: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8nN1dsi3f2DUf5R-pKqgisfU2-8PP8CDVXchM5QIoz0MBbs3I')"
-            }
+            isToggle: false,
+            isLogout: false
+
         }
     }
+    onClick = (event) => {
+        event.preventDefault();
+        this.setState({
+            isToggle: !this.state.isToggle
+        })
+    }
+    onLogout = () => {
+        this.props.requestLogout();
+        this.setState({
+            isLogout: true
+        })
+
+    }
     render() {
+        if (this.state.isLogout) {
+            return (
+                <Redirect to='/'></Redirect>
+            )
+        }
         return (
-            <header className="b-dashboard-header">
-                <div className="b-block">
-                    <div className="b-block-left">
-                        <div className="b-logo">
-                            <img src="/images/dashboard/logo-dashboard.png" alt="Logo" />
-                        </div>
-                    </div>
-                    <div className="b-block-right">
-                        <nav className="b-page-nav">
-                            <ul className="b-list-item">
-                                <li className="b-item b-hash-menu">
-                                    <button className="b-button-dropdown">
-                                        <i className="far fa-envelope"></i>
-                                    </button>
-                                    <span className="b-current is-green">
-                                        <p className="b-text-norm">1</p>
-                                    </span>
-                                    <div className="b-dropdown">
-                                        <div className="b-heading">
-                                            <h2 className="b-text-title">
-                                                You have 1 message(s)
-                                            </h2>
-                                        </div>
-                                        <div className="b-content">
-                                            <div className="b-block-item">
-                                                <div className="b-info">
-                                                    <h2 className="b-text-title">
-                                                        Support Team
-                                                    </h2>
-                                                    <p className="b-text-norm">
-                                                        Why not consider this a test message ?
-                                                    </p>
-                                                </div>
-                                                <div className="b-time">
-                                                    <p className="b-text-norm">
-                                                        <i className="fas fa-clock"></i>
-                                                        17 min ago
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="b-footer">
-                                            <h2 className="b-text-title">
-                                                See All Message
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="b-item b-hash-menu">
-                                    <button className="b-button-dropdown">
-                                        <i className="fas fa-bell"></i>
-                                    </button>
-                                    <span className="b-current is-yellow">
-                                        <p className="b-text-norm">12</p>
-                                    </span>
-                                    <div className="b-dropdown">
-                                        <div className="b-heading">
-                                            <h2 className="b-text-title">
-                                                You have 1 message(s)
-                                            </h2>
-                                        </div>
-                                        <div className="b-content">
-                                            <div className="b-block-item">
-                                                <div className="b-info">
-                                                    <h2 className="b-text-title">
-                                                        Support Team
-                                                    </h2>
-                                                    <p className="b-text-norm">
-                                                        Why not consider this a test message ?
-                                                    </p>
-                                                </div>
-                                                <div className="b-time">
-                                                    <p className="b-text-norm">
-                                                        <i className="fas fa-clock"></i>
-                                                        17 min ago
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="b-footer">
-                                            <h2 className="b-text-title">
-                                                See All Message
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="b-item b-hash-menu">
-                                    <button className="b-button-dropdown">
-                                        <i className="fas fa-flag"></i>
-                                    </button>
-                                    <span className="b-current is-red">
-                                        <p className="b-text-norm">1</p>
-                                    </span>
-                                    <div className="b-dropdown">
-                                        <div className="b-heading">
-                                            <h2 className="b-text-title">
-                                                You have 1 message(s)
-                                            </h2>
-                                        </div>
-                                        <div className="b-content">
-                                            <div className="b-block-item">
-                                                <div className="b-info">
-                                                    <h2 className="b-text-title">
-                                                        Support Team
-                                                    </h2>
-                                                    <p className="b-text-norm">
-                                                        Why not consider this a test message ?
-                                                    </p>
-                                                </div>
-                                                <div className="b-time">
-                                                    <p className="b-text-norm">
-                                                        <i className="fas fa-clock"></i>
-                                                        17 min ago
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="b-footer">
-                                            <h2 className="b-text-title">
-                                                See All Message
-                                            </h2>
-                                        </div>
-                                    </div>
-                                </li>
-
-                            </ul>
-                        </nav>
-                        <div className="b-person b-hash-menu">
-                            <div className="b-dropdown">
-                                <div className="b-heading">
-                                    <h2 className="b-text-title">
-                                        You have 1 message(s)
-                                    </h2>
-                                </div>
-                                <div className="b-content">
-                                    <div className="b-block-item">
-                                        <div className="b-info">
-                                            <h2 className="b-text-title">
-                                                Support Team
-                                            </h2>
-                                            <p className="b-text-norm">
-                                                Why not consider this a test message ?
-                                            </p>
-                                        </div>
-                                        <div className="b-time">
-                                            <p className="b-text-norm">
-                                                <i className="fas fa-clock"></i>
-                                                17 min ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="b-footer">
-                                    <h2 className="b-text-title">
-                                        See All Message
-                                    </h2>
-                                </div>
-                            </div>
-                            <div className="b-icon" style={this.state.style} >
-                            </div>
-                            <div className="b-description">
-                                <p className="b-text-norm">
-                                    Tran Van Phu
-                                </p>
+            <div className="b-dashboard-header">
+                <div className="container-fluid">
+                    <div className="b-block">
+                        <div className="b-block-left">
+                            <div className="b-logo">
+                                <Link to="/dashboard/" className="b-link">
+                                    <img src="/images/core-img/logo2.png" alt="true" />
+                                </Link>
                             </div>
                         </div>
+                        <div className="b-block-right">
+                            <nav className="b-page-nav">
+                                <ul className="b-list-item">
+                                    <li className="b-item">
+                                        <Link to="/" className="b-link"><i className="fas fa-cart-plus" /></Link>
+                                    </li>
+                                    <li className="b-item">
+                                        <Link to="/" className="b-link"><i className="fas fa-bell" /></Link>
+                                    </li>
+                                    <li className="b-item">
+                                        <Link to="/" className="b-link"><i className="fas fa-chart-bar" /></Link>
+                                    </li>
+                                    <li className="b-item">
+                                        <Link to="/" className="b-link"><i className="fas fa-cart-plus" /></Link>
+                                    </li>
+                                    <li className={this.state.isToggle ? "b-item b-toggle active" : "b-item b-toggle"}>
+                                        <Link to="/" onClick={this.onClick} className="b-link">
+                                            Hi,San
+                                            <i className="fab fa-reddit-alien" />
+                                        </Link>
+                                        <div className="b-dropdown">
+                                            <div className="b-heading">
+                                                <div className="b-icon">
+                                                    <img src="/images/core-img/logo2.png" alt="Logo" />
+                                                </div>
+                                                <div className="b-info">
+                                                    <h2 className="b-text-title">
+                                                        Tran Van Phu
+                                                    </h2>
+                                                </div>
+                                            </div>
+                                            <div className="b-signout">
+                                                <button className="b-btn" onClick={this.onLogout}>
+                                                    Sign out
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-
                 </div>
-            </header >
+            </div>
         );
     }
 }
+function mapStateToProps(state) {
+    return {
 
-export default HeaderLayout;
+    }
+}
+export default connect(mapStateToProps, { requestLogout })(HeaderLayout);

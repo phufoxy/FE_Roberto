@@ -5,4 +5,5 @@ import BlogPage from './blog/BlogPage';
 import BlogDetailPage from './blog/details/BlogDetailPage';
 import AboutPage from './about/AboutPage';
 import ContactPage from './contact/ContactPage';
-export { IndexPage, TourPage, TourDetailPage, BlogPage, BlogDetailPage, AboutPage, ContactPage };
+import ProfilePage from './profile/ProfilePage';
+export { ProfilePage, IndexPage, TourPage, TourDetailPage, BlogPage, BlogDetailPage, AboutPage, ContactPage };

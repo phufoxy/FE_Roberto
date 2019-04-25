@@ -35,115 +35,44 @@ class TestimonialsComponent extends Component {
                         <div className="col-lg-6">
                             <div className="b-heading">
                                 <h3 className="b-text-name">
-                                    TESTIMONIALS
+                                    Phản Hồi
                             </h3>
                                 <h2 className="b-text-title">
-                                    Our Guests Love Us
+                                   Những Lời Bình Luận Yêu Thích
                             </h2>
                             </div>
                             <Slider {...settings} className="b-slider-our">
-                                <div className="b-item">
-                                    <div className="b-content">
-                                        <p className="b-text-norm">
-                                            “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                            ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                            ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis iusto!”
-        </p>
-                                        <nav className="b-list-star">
-                                            <ul className="b-list-item">
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        <h3 className="b-text-name">
-                                            Downey Sarah - <span className="is-current">CEO Deercreative</span>
-                                        </h3>
+                                {this.props.feedbackhome.map(data => (
+                                    <div className="b-item" key={data.id}>
+                                        <div className="b-content">
+                                            <p className="b-text-norm">
+                                                “{data.body}”
+                                            </p>
+                                            <nav className="b-list-star">
+                                                <ul className="b-list-item">
+                                                    <li className="b-item">
+                                                        <i className="fas fa-star" />
+                                                    </li>
+                                                    <li className="b-item">
+                                                        <i className="fas fa-star" />
+                                                    </li>
+                                                    <li className="b-item">
+                                                        <i className="fas fa-star" />
+                                                    </li>
+                                                    <li className="b-item">
+                                                        <i className="fas fa-star" />
+                                                    </li>
+                                                    <li className="b-item">
+                                                        <i className="fas fa-star" />
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                            <h3 className="b-text-name">
+                                                Email - <span className="is-current">{data.email}</span>
+                                            </h3>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="b-item">
-                                    <div className="b-content">
-                                        <p className="b-text-norm">
-                                            “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                            ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                            ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis iusto!”
-        </p>
-                                        <nav className="b-list-star">
-                                            <ul className="b-list-item">
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        <h3 className="b-text-name">
-                                            Downey Sarah - <span className="is-current">CEO Deercreative</span>
-                                        </h3>
-                                    </div>
-                                </div>
-                                <div className="b-item">
-                                    <div className="b-content">
-                                        <p className="b-text-norm">
-                                            “Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                            ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                            ex quos. Alias a rem maiores,
-                                            possimus dicta sit distinctio quis iusto!”
-                                        </p>
-                                        <nav className="b-list-star">
-                                            <ul className="b-list-item">
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                                <li className="b-item">
-                                                    <i className="fas fa-star" />
-                                                </li>
-                                            </ul>
-                                        </nav>
-                                        <h3 className="b-text-name">
-                                            Downey Sarah - <span className="is-current">CEO Deercreative</span>
-                                        </h3>
-                                    </div>
-                                </div>
+                                ))}
                             </Slider>
                         </div>
                     </div>

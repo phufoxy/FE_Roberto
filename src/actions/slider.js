@@ -12,13 +12,19 @@ export const REQUEST_UPDATE_SLIDER = "REQUEST_UPDATE_SLIDER";
 
 const API_URL = "http://127.0.0.1:8000/api/";
 function noteDelete(id) {
-    toast.info(`Delete Success ${id} !`, {
+    toast.warning(`Delete Success ${id} !`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'toast-success-delete'
+    });
+};
+function noteAdd(param, data) {
+    toast.success(`${param} Success  ${data.id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         className: 'toast-success'
     });
 };
-function noteAdd(param, data) {
-    toast.info(`${param} Success  ${data.name} !`, {
+function noteError(param, data) {
+    toast.error(`${param} Error  ${data} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         className: 'toast-success'
     });
@@ -39,6 +45,7 @@ export function requestGetSlider() {
                 payload: response.data
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
         })
     }
@@ -60,6 +67,7 @@ export function requestDeleteSlider(id) {
                 payload: id
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
         })
     }
@@ -86,6 +94,7 @@ export function requestAddSlider(data) {
                 payload: response.data
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
         })
     }
@@ -112,6 +121,7 @@ export function requestUpdateSlider(data) {
                 payload: response.data
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
         })
     }

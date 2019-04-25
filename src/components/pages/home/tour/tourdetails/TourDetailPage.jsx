@@ -1,18 +1,103 @@
 import React, { Component } from 'react';
 import { HeaderLayout, MenuLayout, FooterLayout } from '../../../../layouts/home';
-import { ContactComponent, SliderDetailComponent } from '../../../../shared/home';
+import { CommentItemComponent, ContactComponent, SliderDetailComponent, BookComponent, InfoComponent, ConfirmComponent, FormComment } from '../../../../shared/home';
 import { connect } from 'react-redux';
-import { requestGetTourDetailHome } from '../../../../../actions/tour';
+import { requestAddBookTourHome, requestBookTourHome, requestCheckBook } from '../../../../../actions/booktour';
+import { requestGetTourDetailHome, requestAddLike, requestAddComment } from '../../../../../actions/tour';
+import ScrollUpButton from "react-scroll-up-button";
+import { Parallax } from "react-parallax";
+import { ToastContainer } from 'react-toastify';
+import Page from 'react-page-loading';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Cookies from 'universal-cookie';
+import { Redirect } from 'react-router-dom';
+const cookies = new Cookies();
+
 class TourDetailPage extends Component {
-    
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            views: "DETAILS",
+            redirect: false,
+        }
+    }
+
+
+    onViews = (views) => {
+        this.setState({
+            views: views
+        })
+    }
     componentDidMount() {
         this.props.requestGetTourDetailHome(this.props.match.params.tour);
+
+    }
+    onBookTour = (data) => {
+        this.props.requestAddBookTourHome(data, cookies.get('data').id, this.props.data.id, this.props.data.price);
+    }
+    onAddLike = () => {
+        if (cookies.get('data') === undefined && cookies.get('token') === undefined) {
+            toast.warning(`Vui Lòng Đăng Nhập Để được Like`, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                className: 'toast-success-delete'
+            });
+        } else {
+            this.props.requestAddLike(cookies.get('data').email, this.props.data.id, 1);
+            this.props.requestGetTourDetailHome(this.props.match.params.tour);
+        }
+    }
+    onBookTour = (data) => {
+        this.props.requestBookTourHome(data, this.props.data.price, this.props.data.date_start, this.props.data.id, this.props.data.total);
+        this.setState({
+            views: "CONFIRM_TOUR"
+        })
+    }
+    onCheckTour = (id, tour) => {
+        this.props.requestCheckBook(id, tour);
+        this.setState({
+            views: "FINSHED_TOUR"
+        })
+
+    }
+    onFinshed = () => {
+        this.setState({
+            redirect: true
+        })
+    }
+    onComment = (data) => {
+        if (cookies.get('data') === undefined && cookies.get('token') === undefined) {
+            toast.warning(`Vui Lòng Đăng Nhập Để được Bình Luận`, {
+                position: toast.POSITION.BOTTOM_RIGHT,
+                className: 'toast-success-delete'
+            });
+        } else {
+            this.props.requestAddComment(this.props.data.id, cookies.get('data'), data);
+            this.props.requestGetTourDetailHome(this.props.match.params.tour);
+        }
+
     }
     render() {
+        if (this.props.data.rating !== undefined) {
+            let number = 0;
+            this.props.data.rating.forEach(element => {
+                number += element.star
+
+            });
+
+            console.log(number/this.props.data.rating.length);
+
+        }
+
+        if (this.state.redirect) {
+            return (
+                <Redirect to='/tour'></Redirect>
+            )
+        }
         const Slider = () => {
             if (this.props.data.images_details && this.props.data.images_details.constructor === Array && this.props.data.images_details.length !== 0) {
                 return (
-                    <SliderDetailComponent data={this.props.data.images_details}></SliderDetailComponent>
+                    <SliderDetailComponent data={this.props.data.images_details} onAddLike={this.onAddLike}></SliderDetailComponent>
                 )
             }
         }
@@ -24,319 +109,171 @@ class TourDetailPage extends Component {
                 )
             }
         }
-        return (
-            <div className="wrapper">
-                <HeaderLayout></HeaderLayout>
-                <MenuLayout></MenuLayout>
-                <main className="b-page-main">
-                    <section className="b-page-hero" style={{ backgroundImage: 'url("/images/bg-img/1.jpg")' }} data-paroller-factor="0.8" data-paroller-factor-xs="0.2">
-                        <div className="b-block">
-                            <div className="b-block-left">
-                                <h2 className="b-text-title">
-                                    Room View Sea
-                                </h2>
-                            </div>
-                            <div className="b-block-right">
-                                <h5 className="b-text-price">
-                                    $180 / <span className="is-current">Per Night</span>
-                                </h5>
-                            </div>
-                        </div>
-                    </section>
-                    <section className="b-page-room">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-lg-8">
-                                    <div className="b-room">
+        const contentMain = () => {
+
+            switch (this.state.views) {
+                case "DETAILS":
+
+
+                    return (
+                        <section className="b-page-room">
+                            <div className="container-fluid">
+                                <div className="b-room">
+                                    <div className="b-heading">
+                                        <h2 className="b-text-title">
+                                            {this.props.data.name}
+                                        </h2>
+                                    </div>
+                                    <div className="b-room-top">
                                         {Slider()}
-                                        <div className="b-information">
-                                            <div className="b-item">
-                                                <h3 className="b-text-name">
-                                                    Price
-                                                </h3>
-                                                <p className="b-text-norm">
-                                                    {this.props.data.price}$
-                                                </p>
-                                            </div>
-                                            <div className="b-item">
-                                                <h3 className="b-text-name">
-                                                    Person
-                                                </h3>
-                                                <p className="b-text-norm">
-                                                    {this.props.data.total}person
-                                                </p>
-                                            </div>
-                                            <div className="b-item">
-                                                <h3 className="b-text-name">
-                                                    Date
-                                                </h3>
-                                                <p className="b-text-norm">
-                                                    {this.props.data.date} Day
-                                                </p>
-                                            </div>
-                                            <div className="b-item">
-                                                <h3 className="b-text-name">
-                                                    Location
-                                                </h3>
-                                                <p className="b-text-norm">
-                                                   {this.props.data.location}
-                                            </p>
-                                            </div>
-                                        </div>
+                                        <BookComponent data={this.props.data} onViews={this.onViews} views="BOOK"></BookComponent>
+                                    </div>
+                                    <InfoComponent data={this.props.data}></InfoComponent>
+                                    <div className="b-content">
                                         {body()}
-                                        <div className="b-service">
-                                            <div className="b-header">
-                                                <h2 className="b-text-title">
-                                                    Room Services
-                                                </h2>
-                                            </div>
-                                            <div className="b-block">
-                                                <div className="b-item">
-                                                    <div className="b-images">
-                                                        <img src="/images/core-img/icon1.png" alt="true" />
+                                    </div>
+                                    <div className="b-review">
+                                        <div className="container-fluid">
+                                            <div className="row">
+                                                <div className="col-lg-8">
+                                                    <div className="b-comments">
+                                                        <FormComment onComment={this.onComment}></FormComment>
                                                     </div>
-                                                    <p className="b-text-norm">
-                                                        Air Conditioning
-                                                    </p>
-                                                </div>
-                                                <div className="b-item">
-                                                    <div className="b-images">
-                                                        <img src="/images/core-img/icon1.png" alt="true" />
-                                                    </div>
-                                                    <p className="b-text-norm">
-                                                        Air Conditioning
-                                                    </p>
-                                                </div>
-                                                <div className="b-item">
-                                                    <div className="b-images">
-                                                        <img src="/images/core-img/icon1.png" alt="true" />
-                                                    </div>
-                                                    <p className="b-text-norm">
-                                                        Air Conditioning
-                                                </p>
-                                                </div>
-                                                <div className="b-item">
-                                                    <div className="b-images">
-                                                        <img src="/images/core-img/icon1.png" alt="true" />
-                                                    </div>
-                                                    <p className="b-text-norm">
-                                                        Air Conditioning
-                                                </p>
-                                                </div>
-                                                <div className="b-item">
-                                                    <div className="b-images">
-                                                        <img src="/images/core-img/icon1.png" alt="true" />
-                                                    </div>
-                                                    <p className="b-text-norm">
-                                                        Air Conditioning
-                                                    </p>
-                                                </div>
-                                                <div className="b-item">
-                                                    <div className="b-images">
-                                                        <img src="/images/core-img/icon1.png" alt="true" />
-                                                    </div>
-                                                    <p className="b-text-norm">
-                                                        Air Conditioning
-                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="b-review">
-                                            <div className="b-header">
-                                                <h2 className="b-text-title">
-                                                    Room Review
-                                                </h2>
-                                            </div>
-                                            <div className="b-block">
-                                                <div className="b-block-item">
-                                                    <div className="b-images">
-                                                        <div className="b-icon" style={{ backgroundImage: 'url("/images/bg-img/10.jpg")' }}>
-                                                        </div>
-                                                    </div>
-                                                    <div className="b-content">
-                                                        <h4 className="b-text-time">
-                                                            27 Aug 2019
-                                                        </h4>
-                                                        <h3 className="b-text-name">
-                                                            Brandon Kelley
-                                                        </h3>
-                                                        <p className="b-text-norm">
-                                                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                            consectetur, adipisci velit, sed quia non numquam eius modi tempora.
-                                                        </p>
-                                                    </div>
-                                                    <div className="b-star">
-                                                        <ul className="b-list-item">
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="b-block-item">
-                                                    <div className="b-images">
-                                                        <div className="b-icon" style={{ backgroundImage: 'url("/images/bg-img/10.jpg")' }}>
-                                                        </div>
-                                                    </div>
-                                                    <div className="b-content">
-                                                        <h4 className="b-text-time">
-                                                            27 Aug 2019
-                                                        </h4>
-                                                        <h3 className="b-text-name">
-                                                            Brandon Kelley
-                                                        </h3>
-                                                        <p className="b-text-norm">
-                                                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                            consectetur, adipisci velit, sed quia non numquam eius modi tempora.
-                                                        </p>
-                                                    </div>
-                                                    <div className="b-star">
-                                                        <ul className="b-list-item">
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                                <div className="b-block-item">
-                                                    <div className="b-images">
-                                                        <div className="b-icon" style={{ backgroundImage: 'url("/images/bg-img/10.jpg")' }}>
-                                                        </div>
-                                                    </div>
-                                                    <div className="b-content">
-                                                        <h4 className="b-text-time">
-                                                            27 Aug 2019
-                                                        </h4>
-                                                        <h3 className="b-text-name">
-                                                            Brandon Kelley
-                                                        </h3>
-                                                        <p className="b-text-norm">
-                                                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                                                            consectetur, adipisci velit, sed quia non numquam eius modi tempora.
-                                                        </p>
-                                                    </div>
-                                                    <div className="b-star">
-                                                        <ul className="b-list-item">
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                            <li className="b-item">
-                                                                <i className="fas fa-star" />
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                            <div className="row">
+                                                <div className="col-lg-8">
+                                                    <CommentItemComponent data={this.props.data.comments}></CommentItemComponent>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-4">
-                                    <div className="b-form wow fadeInUp">
-                                        <form className="b-form-content">
-                                            <div className="b-form-group">
-                                                <div className="b-header">
-                                                    <h2 className="b-text-title">
-                                                        Date
-                                                    </h2>
-                                                </div>
-                                                <div className="b-content">
-                                                    <input type="text" placeholder="name" />
-                                                    <input type="text" placeholder="address" />
-                                                </div>
-                                            </div>
-                                            <div className="b-form-group">
-                                                <div className="b-header">
-                                                    <h2 className="b-text-title">
-                                                        Guests
-                      </h2>
-                                                </div>
-                                                <div className="b-content">
-                                                    <select name="name">
-                                                        <option value={1}>1</option>
-                                                        <option value={2}>2</option>
-                                                        <option value={3}>3</option>
-                                                    </select>
-                                                    <select name="name">
-                                                        <option value={1}>1</option>
-                                                        <option value={2}>2</option>
-                                                        <option value={3}>3</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div className="b-form-group">
-                                                <button type="submit" className="b-btn">Check Available</button>
-                                            </div>
-                                        </form>
+                            </div>
+                        </section>
+                    )
+                case "DETAIL_BOOK":
+
+                    return (
+                        <section className="b-page-room">
+                            <div className="b-book-pay">
+                                <div className="b-block">
+                                    <BookComponent data={this.props.data} onViews={this.onViews} views="DETAIL_BOOK"></BookComponent>
+                                    <div className="b-block-content">
+                                        <div className="b-heading">
+                                            <h2 className="b-text-title">
+                                                Thông tin liên lạc
+                                             </h2>
+                                        </div>
+                                        <ConfirmComponent price={this.props.data.price} onBookTour={this.onBookTour} views="BOOK_TOUR"></ConfirmComponent>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <ContactComponent></ContactComponent>
-                    <section className="b-page-read">
-                        <div className="container">
-                            <div className="b-block">
-                                <div className="b-block-item">
-                                    <img src="/images/core-img/p1.png" alt="images" />
-                                </div>
-                                <div className="b-block-item">
-                                    <img src="/images/core-img/p2.png" alt="images" />
-                                </div>
-                                <div className="b-block-item">
-                                    <img src="/images/core-img/p3.png" alt="images" />
-                                </div>
-                                <div className="b-block-item">
-                                    <img src="/images/core-img/p4.png" alt="images" />
-                                </div>
-                                <div className="b-block-item">
-                                    <img src="/images/core-img/p5.png" alt="images" />
+                        </section>
+                    )
+                case "CONFIRM_TOUR":
+
+                    return (
+                        <section className="b-page-room">
+                            <div className="b-book-pay">
+                                <div className="b-block">
+                                    <BookComponent data={this.props.data} onViews={this.onViews} views="DETAIL_BOOK"></BookComponent>
+                                    <div className="b-block-content">
+                                        <ConfirmComponent data={this.props.booktour} onCheckTour={this.onCheckTour} views="CONFIRM"></ConfirmComponent>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                </main>
-                <FooterLayout></FooterLayout>
-            </div>
+                        </section>
+                    )
+                case "FINSHED_TOUR":
+                    return (
+                        <section className="b-page-room">
+                            <div className="b-book-pay">
+                                <div className="b-block">
+                                    <BookComponent data={this.props.data} onViews={this.onViews} views="DETAIL_BOOK"></BookComponent>
+                                    <div className="b-block-content">
+
+                                        <ConfirmComponent onFinshed={this.onFinshed} views="FINSHED_TOUR"></ConfirmComponent>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    )
+                default:
+                    return (<></>)
+            }
+        }
+        return (
+
+
+            <Page loader={"bubble"} color={"#1cc3b2"} size={4} duration={1}>
+                <div className="wrapper">
+                    <ToastContainer autoClose={2000} draggable={false} hideProgressBar newestOnTop closeOnClick={true} />
+                    <HeaderLayout></HeaderLayout>
+                    <MenuLayout></MenuLayout>
+                    <main className="b-page-main">
+
+                        <Parallax bgImage={(`http://127.0.0.1:8000${this.props.data.images}`)} strength={500}>
+                            <section className="b-page-hero" >
+                                <div className="b-block">
+                                    <div className="b-block-left">
+                                        <h2 className="b-text-title">
+                                            {this.props.data.name}
+                                        </h2>
+                                    </div>
+                                    <div className="b-block-right">
+                                        <h5 className="b-text-price">
+                                            ${this.props.data.price} / <span className="is-current">day</span>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </section>
+                        </Parallax>
+                        {contentMain()}
+                        <ContactComponent></ContactComponent>
+                        <section className="b-page-read">
+                            <div className="container">
+                                <div className="b-block">
+                                    <div className="b-block-item">
+                                        <img src="/images/core-img/p1.png" alt="images" />
+                                    </div>
+                                    <div className="b-block-item">
+                                        <img src="/images/core-img/p2.png" alt="images" />
+                                    </div>
+                                    <div className="b-block-item">
+                                        <img src="/images/core-img/p3.png" alt="images" />
+                                    </div>
+                                    <div className="b-block-item">
+                                        <img src="/images/core-img/p4.png" alt="images" />
+                                    </div>
+                                    <div className="b-block-item">
+                                        <img src="/images/core-img/p5.png" alt="images" />
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                    <ScrollUpButton
+                        StopPosition={0}
+                        ShowAtPosition={150}
+                        EasingType='easeOutCubic'
+                        AnimationDuration={1000}
+                        ContainerClassName='ScrollUpButton__Container'
+                        TransitionClassName='ScrollUpButton__Toggled'
+                        style={{}}
+                        ToggledStyle={{}}
+                    />
+                    <FooterLayout></FooterLayout>
+                </div>
+            </Page>
         );
     }
 }
 function mapStateToProps(state) {
     return {
         data: state.tour.tour,
-        fecthing: state.tour.fetching
+        fecthing: state.tour.fetching,
+        booktour: state.booktour.booktour
     }
 }
-export default connect(mapStateToProps, { requestGetTourDetailHome })(TourDetailPage);
+export default connect(mapStateToProps, { requestAddComment, requestCheckBook, requestBookTourHome, requestAddLike, requestGetTourDetailHome, requestAddBookTourHome })(TourDetailPage);

@@ -1,3 +1,4 @@
 import LoginPage from './LoginPage';
 import RegisterPage from './RegisterPage';
-export { LoginPage, RegisterPage };
+import ForgotPassword from './ForgotPassword';
+export { LoginPage, RegisterPage, ForgotPassword };

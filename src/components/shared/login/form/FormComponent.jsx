@@ -5,7 +5,8 @@ class FormComponent extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            confirm_password: '',
         }
         this.onChanger = this.onChanger.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -17,31 +18,85 @@ class FormComponent extends Component {
     }
     onSubmit(event) {
         event.preventDefault();
-        this.props.onLogin(this.state.username, this.state.password)
+        if (this.props.is_check === "login") {
+            this.props.onLogin(this.state.username, this.state.password);
+        } else if (this.props.is_check === "register") {
+            this.props.onRegister(this.state);
+        } else {
+            if (this.state.password === this.state.confirm_password) {
+                this.props.onForgotPass(this.state.username, this.state.password);
+            }
+        }
     }
     render() {
+        const mainContent = () => {
+            switch (this.props.choice) {
+                case "LOGIN":
+                    return (
+                        <form className="b-form" onSubmit={this.onSubmit}>
+                            <h2 className="b-text-title">
+                                ACCOUNT LOGIN
+                        </h2>
+                            <div className="b-group b-register">
+                                <div className="b-group-form">
+                                    <input type="text" name="username" className="b-input" placeholder="user name" onChange={this.onChanger} value={this.state.username} />
+                                </div>
+                                <div className="b-group-form">
+                                    <input type="password" name="password" className="b-input" placeholder="user password" onChange={this.onChanger} value={this.state.password} />
+                                </div>
+
+                            </div>
+                            <button className="b-btn waves-effect waves-teal">SIGN IN</button>
+                        </form>
+                    )
+                case "REGISTER":
+                    return (
+                        <form className="b-form" onSubmit={this.onSubmit}>
+                            <h2 className="b-text-title">
+                                REGISTER FORM
+                            </h2>
+                            <div className="b-group b-register">
+                                <div className="b-group-form">
+                                    <input type="text" name="username" className="b-input" placeholder="Enter UserName" onChange={this.onChanger} value={this.state.username} />
+                                </div>
+                                <div className="b-group-form">
+                                    <input type="password" name="password" className="b-input" placeholder="Enter Password" onChange={this.onChanger} value={this.state.password} />
+                                </div>
+                                <div className="b-group-form">
+                                    <input type="password" name="confirm_password" className="b-input" placeholder="Enter Confirm Password" onChange={this.onChanger} value={this.state.confirm_password} />
+                                </div>
+                            </div>
+                            <button className="b-btn waves-effect waves-teal">SIGN UP</button>
+                        </form>
+                    )
+                case "FORGOT":
+                    return (
+                        <form className="b-form" onSubmit={this.onSubmit}>
+                            <h2 className="b-text-title">
+                                FORGOT FORM
+                        </h2>
+                            <div className="b-group b-register">
+                                <div className="b-group-form">
+                                    <input type="text" name="username" className="b-input" placeholder="Enter UserName" onChange={this.onChanger} value={this.state.username} />
+                                </div>
+                                <div className="b-group-form">
+                                    <input type="password" name="password" className="b-input" placeholder="Enter old_password" onChange={this.onChanger} value={this.state.password} />
+                                </div>
+                                <div className="b-group-form">
+                                    <input type="password" name="confirm_password" className="b-input" placeholder="user password" onChange={this.onChanger} value={this.state.confirm_password} />
+                                </div>
+                            </div>
+                            <button className="b-btn waves-effect waves-teal">UPDATE PASS</button>
+                        </form>
+                    )
+                default:
+                    return (
+                        <></>
+                    )
+            }
+        }
         return (
-            <div className="b-form-main">
-                <form onSubmit={this.onSubmit}>
-                    <div className="b-form-group  wow fadeInDown">
-                        <div className="b-icon">
-                            <i className="far fa-envelope"></i>
-                        </div>
-                        <div className="b-input">
-                            <input type="text" name="username" placeholder="Username" onChange={this.onChanger} />
-                        </div>
-                    </div>
-                    <div className="b-form-group  wow fadeInDown">
-                        <div className="b-icon">
-                            <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="b-input ">
-                            <input type="password" name="password" placeholder="Password" onChange={this.onChanger} />
-                        </div>
-                    </div>
-                    <input type="submit" value="Submit" className=" wow fadeInDown" />
-                </form>
-            </div>
+            mainContent()
         );
     }
 }

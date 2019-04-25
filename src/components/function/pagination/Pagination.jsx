@@ -111,31 +111,35 @@ class Pagination extends Component {
         }
         return (
             <div className="b-pagination">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <nav className="b-page-nav text-center">
-                            <ul className="b-list-item">
-                                <li className={pager.currentPage === 1 ? 'b-item b-item-first disabled' : 'b-item b-item-first'}>
-                                    <button className="b-btn" onClick={() => this.setPage(1)}>First</button>
-                                </li>
-                                <li className={pager.currentPage === 1 ? 'b-item disabled' : 'b-item'}>
-                                    <button className="b-btn" onClick={() => this.setPage(pager.currentPage - 1)}>Previous</button>
-                                </li>
-                                {pager.pages.map((page, index) =>
-                                    <li key={index} className={pager.currentPage === page ? 'b-item active' : 'b-item'}>
-                                        <button className="b-btn" onClick={() => this.setPage(page)}>{page}</button>
-                                    </li>
-                                )}
-                                <li className={pager.currentPage === pager.totalPages ? 'b-item disabled' : 'b-item'}>
-                                    <button className="b-btn" onClick={() => this.setPage(pager.currentPage + 1)}>Next</button>
-                                </li>
-                                <li className={pager.currentPage === pager.totalPages ? 'b-item b-item-last disabled' : 'b-item b-item-last'}>
-                                    <button className="b-btn" onClick={() => this.setPage(pager.totalPages)}>Last</button>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+                <nav className="b-page-nav">
+                    <ul className="b-list-item">
+                        <li className={pager.currentPage === 1 ? 'b-item b-arrow-first disabled' : 'b-item b-arrow-first'}>
+                            <button className="b-btn" onClick={() => this.setPage(1)}>
+                                <i className="fas fa-angle-double-left"></i>
+                            </button>
+                        </li>
+                        <li className={pager.currentPage === 1 ? 'b-item b-arrow-prev disabled' : 'b-item b-arrow-prev'}>
+                            <button className="b-btn" onClick={() => this.setPage(pager.currentPage - 1)}>
+                                <i className="fas fa-chevron-left"></i>
+                            </button>
+                        </li>
+                        {pager.pages.map((page, index) =>
+                            <li key={index} className={pager.currentPage === page ? 'b-item is-active' : 'b-item'}>
+                                <button className="b-btn" onClick={() => this.setPage(page)}>{page}</button>
+                            </li>
+                        )}
+                        <li className={pager.currentPage === pager.totalPages ? 'b-item b-arrow-next disabled' : 'b-item b-arrow-next'}>
+                            <button className="b-btn" onClick={() => this.setPage(pager.currentPage + 1)}>
+                                <i className="fas fa-chevron-right"></i>
+                            </button>
+                        </li>
+                        <li className={pager.currentPage === pager.totalPages ? 'b-item b-arrow-last disabled' : 'b-item b-arrow-last'}>
+                            <button className="b-btn" onClick={() => this.setPage(pager.totalPages)}>
+                                <i className="fas fa-angle-double-right"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         );
     }

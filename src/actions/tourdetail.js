@@ -11,13 +11,19 @@ export const REQUEST_ADD_TOUR_DETAIL = 'REQUEST_ADD_TOUR_DETAIL';
 export const REQUEST_UPDATE_TOUR_DETAIL = 'REQUEST_UPDATE_TOUR_DETAIL';
 const API_URL = "http://127.0.0.1:8000/api";
 function noteDelete(id) {
-    toast.info(`Delete Success ${id} !`, {
+    toast.warning(`Delete Success ${id} !`, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+        className: 'toast-success-delete'
+    });
+};
+function noteAdd(param, data) {
+    toast.success(`${param} Success  ${data.id} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         className: 'toast-success'
     });
 };
-function noteAdd(param, data) {
-    toast.info(`${param} Success  ${data.title} !`, {
+function noteError(param, data) {
+    toast.error(`${param} Error  ${data} !`, {
         position: toast.POSITION.BOTTOM_RIGHT,
         className: 'toast-success'
     });
@@ -38,6 +44,7 @@ export function requestGetTourDetail() {
                 payload: response.data
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
         })
     }
@@ -59,6 +66,7 @@ export function requestDeleteTourDetail(id) {
                 payload: id
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
 
         })
@@ -87,6 +95,7 @@ export function requestAddTourDetail(data) {
                 payload: response.data
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
 
         })
@@ -115,6 +124,7 @@ export function requestUpdateTourDetail(data) {
                 payload: response.data
             })
         }).catch(function (error) {
+            noteError(error);
             dispatch(requestRejected(error));
 
         })

@@ -22,35 +22,23 @@ class FormRegisterComponent extends Component {
     }
     render() {
         return (
-            <div className="b-form-main">
-                <form onSubmit={this.onSubmit}>
-                    <div className="b-form-group  wow fadeInDown">
-                        <div className="b-icon">
-                            <i className="far fa-envelope"></i>
-                        </div>
-                        <div className="b-input">
-                            <input type="text" name="username" placeholder="Username" onChange={this.onChanger} />
-                        </div>
+            <form className="b-form" onSubmit={this.onSubmit}>
+                <h2 className="b-text-title">
+                    ACCOUNT REGISTER
+            </h2>
+                <div className="b-group b-register">
+                    <div className="b-group-form">
+                        <input type="text" name="username" className="b-input" placeholder="user name" onChange={this.onChanger} value={this.state.username} />
                     </div>
-                    <div className="b-form-group  wow fadeInDown">
-                        <div className="b-icon">
-                            <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="b-input ">
-                            <input type="password" name="password" placeholder="Password" onChange={this.onChanger} />
-                        </div>
+                    <div className="b-group-form">
+                        <input type="password" name="password" className="b-input" placeholder="user password" onChange={this.onChanger} value={this.state.password} />
                     </div>
-                    <div className="b-form-group  wow fadeInDown">
-                        <div className="b-icon">
-                            <i className="fas fa-lock"></i>
-                        </div>
-                        <div className="b-input ">
-                            <input type="password" name="confirm_password" placeholder="Confirm Password" onChange={this.onChanger} />
-                        </div>
+                    <div className="b-group-form">
+                        <input type="password" name="confirm_password" className="b-input" placeholder="user confirm_password" onChange={this.onChanger} value={this.state.confirm_password} />
                     </div>
-                    <input type="submit" value="Submit" className=" wow fadeInDown" />
-                </form>
-            </div>
+                </div>
+                <button className="b-btn waves-effect waves-teal">SIGN UP</button>
+            </form>
         );
     }
 }

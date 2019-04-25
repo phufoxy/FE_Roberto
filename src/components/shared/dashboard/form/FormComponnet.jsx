@@ -15,10 +15,10 @@ class FormComponnet extends Component {
             content: this.props.dataEdit && this.props.dataEdit.content ? this.props.dataEdit.content : '',
             address: this.props.dataEdit && this.props.dataEdit.address ? this.props.dataEdit.address : '',
             type: this.props.dataEdit && this.props.dataEdit.type ? this.props.dataEdit.type : '',
-            price: this.props.dataEdit && this.props.dataEdit.price ? this.props.dataEdit.price : 0,
-            total: this.props.dataEdit && this.props.dataEdit.total ? this.props.dataEdit.total : 0,
-            date: this.props.dataEdit && this.props.dataEdit.date ? this.props.dataEdit.date : 0,
-            review: this.props.dataEdit && this.props.dataEdit.review ? this.props.dataEdit.review : 0,
+            price: this.props.dataEdit && this.props.dataEdit.price ? this.props.dataEdit.price : '',
+            total: this.props.dataEdit && this.props.dataEdit.total ? this.props.dataEdit.total : '',
+            date: this.props.dataEdit && this.props.dataEdit.date ? this.props.dataEdit.date : '',
+            review: this.props.dataEdit && this.props.dataEdit.review ? this.props.dataEdit.review : '',
             place: this.props.dataEdit && this.props.dataEdit.place ? this.props.dataEdit.place : '',
             house: this.props.dataEdit && this.props.dataEdit.house ? this.props.dataEdit.house : '',
             tour: this.props.dataEdit && this.props.dataEdit.tour ? this.props.dataEdit.tour : '',
@@ -28,6 +28,8 @@ class FormComponnet extends Component {
             editorState: this.props.dataEdit && this.props.dataEdit.body ? this.convertHtmlToDraft(this.props.dataEdit.body) : EditorState.createEmpty(),
             imageEditor: '',
             images: '',
+            type_tour: this.props.dataEdit && this.props.dataEdit.type_tour ? this.props.dataEdit.type_tour : '',
+            location: this.props.dataEdit && this.props.dataEdit.location ? this.props.dataEdit.location : '',
             blog: this.props.dataEdit && this.props.dataEdit.blog ? this.props.dataEdit.blog : '',
         }
         this.onChanger = this.onChanger.bind(this);
@@ -317,7 +319,7 @@ class FormComponnet extends Component {
                                             </div>
                                             <div className="b-form-group">
                                                 <div className="b-icon">
-                                                    <i className="fas fa-home"></i>
+                                                    <i className="fas fa-money-bill-alt"></i>
                                                 </div>
                                                 <div className="b-input">
                                                     <input type="text" name="price" placeholder="Enter price" onChange={this.onChanger} value={this.state.price} />
@@ -325,7 +327,7 @@ class FormComponnet extends Component {
                                             </div>
                                             <div className="b-form-group">
                                                 <div className="b-icon">
-                                                    <i className="fas fa-home"></i>
+                                                    <i className="fas fa-sort-numeric-up"></i>
                                                 </div>
                                                 <div className="b-input">
                                                     <input type="text" name="total" placeholder="Enter total" onChange={this.onChanger} value={this.state.total} />
@@ -333,10 +335,10 @@ class FormComponnet extends Component {
                                             </div>
                                             <div className="b-form-group">
                                                 <div className="b-icon">
-                                                    <i className="fas fa-home"></i>
+                                                    <i className="fas fa-clock"></i>
                                                 </div>
                                                 <div className="b-input">
-                                                    <input type="text" name="date" placeholder="Enter date" onChange={this.onChanger} value={this.state.date} />
+                                                    <input type="number" name="date" placeholder="Enter date" onChange={this.onChanger} value={this.state.date} />
                                                 </div>
                                             </div>
                                             <div className="b-form-group">
@@ -345,6 +347,22 @@ class FormComponnet extends Component {
                                                 </div>
                                                 <div className="b-input">
                                                     <input type="file" name="images" placeholder="Enter Name" onChange={this.onChangerFile} />
+                                                </div>
+                                            </div>
+                                            <div className="b-form-group">
+                                                <div className="b-icon">
+                                                    <i className="fas fa-clock"></i>
+                                                </div>
+                                                <div className="b-input">
+                                                    <input type="text" name="type_tour" placeholder="Enter type_tour" onChange={this.onChanger} value={this.state.type_tour} />
+                                                </div>
+                                            </div>
+                                            <div className="b-form-group">
+                                                <div className="b-icon">
+                                                    <i className="fas fa-clock"></i>
+                                                </div>
+                                                <div className="b-input">
+                                                    <input type="text" name="location" placeholder="Enter location" onChange={this.onChanger} value={this.state.location} />
                                                 </div>
                                             </div>
                                             <input type="submit" value="submit" />
@@ -432,8 +450,8 @@ class FormComponnet extends Component {
                                                                 inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
                                                                 alt: { present: false, mandatory: false },
                                                                 defaultSize: {
-                                                                    height: '200px',
-                                                                    width: '200px',
+                                                                    height: '400px',
+                                                                    width: '400px',
                                                                 },
                                                             },
                                                             fontFamily: {
@@ -782,8 +800,8 @@ class FormComponnet extends Component {
                                                                 inputAccept: 'image/gif,image/jpeg,image/jpg,image/png,image/svg',
                                                                 alt: { present: false, mandatory: false },
                                                                 defaultSize: {
-                                                                    height: '200px',
-                                                                    width: '200px',
+                                                                    height: '400px',
+                                                                    width: '400px',
                                                                 },
                                                             }
 

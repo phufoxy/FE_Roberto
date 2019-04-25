@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
+import { Link } from 'react-router-dom';
+var NumberFormat = require('react-number-format');
 
 class FeatureComponent extends Component {
+    onViews(views, id) {
+        this.props.onAddViews(views, id);
+    }
     render() {
         const settings = {
             slidesToShow: 3,
@@ -13,144 +18,44 @@ class FeatureComponent extends Component {
         };
         return (
             <Slider {...settings} className="b-slider-feature">
-                <div className="b-slider-item" >
-                    <div className="b-overload" style={{ backgroundImage: 'url("../../images/bg-img/1.jpg")' }}>
-                        <div className="b-content">
-                            <div className="b-overlay">
-                                <div className="b-info">
-                                    <h2 className="b-text-title">
-                                        Entertaiment
-                            </h2>
-                                    <h3 className="b-text-name">
-                                        Racing Bike
-                            </h3>
-                                </div>
-                            </div>
-                            <div className="b-entertaiment">
-                                <div className="b-block-content">
-                                    <h3 className="b-text-name">
-                                        Entertaiment
-                            </h3>
-                                    <h2 className="b-text-title">
-                                        Eacing Bike
-                            </h2>
-                                    <p className="b-text-norm">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                        possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                        ex quos. Alias a rem maiores
-                            </p>
-                                </div>
-                                <div className="b-discover">
-                                    <a href="/" className="b-link">Discover Now <i className="fas fa-arrow-right" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="b-slider-item">
-                    <div className="b-overload" style={{ backgroundImage: 'url("../../images/bg-img/2.jpg")' }}>
-                        <div className="b-content">
-                            <div className="b-overlay">
-                                <div className="b-info">
-                                    <h2 className="b-text-title">
-                                        Entertaiment
-                            </h2>
-                                    <h3 className="b-text-name">
-                                        Racing Bike
-                            </h3>
-                                </div>
-                            </div>
-                            <div className="b-entertaiment">
-                                <div className="b-block-content">
-                                    <h3 className="b-text-name">
-                                        Entertaiment
-                            </h3>
-                                    <h2 className="b-text-title">
-                                        Eacing Bike
-                            </h2>
-                                    <p className="b-text-norm">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                        possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                        ex quos. Alias a rem maiores
-                            </p>
-                                </div>
-                                <div className="b-discover">
-                                    <a href="/" className="b-link">Discover Now <i className="fas fa-arrow-right" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="b-slider-item" >
-                    <div className="b-overload" style={{ backgroundImage: 'url("../../images/bg-img/3.jpg")' }}>
+                {this.props.data.map(data => (
+                    <div className="b-slider-item" key={data.id} >
+                        <div className="b-overload" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
+                            <div className="b-content">
+                                <div className="b-overlay">
+                                    <div className="b-info">
+                                        <h2 className="b-text-title">
+                                            {data.name}
+                                        </h2>
+                                        <NumberFormat value={data.price} displayType={'text'} thousandSeparator={true} renderText={value =>
+                                            <h3 className="b-text-name">
+                                                {value}₫
+                                            </h3>
+                                        } />
 
-                        <div className="b-content">
-                            <div className="b-overlay">
-                                <div className="b-info">
-                                    <h2 className="b-text-title">
-                                        Entertaiment
-                            </h2>
-                                    <h3 className="b-text-name">
-                                        Racing Bike
-                            </h3>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="b-entertaiment">
-                                <div className="b-block-content">
-                                    <h3 className="b-text-name">
-                                        Entertaiment
-                            </h3>
-                                    <h2 className="b-text-title">
-                                        Eacing Bike
-                            </h2>
-                                    <p className="b-text-norm">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                        possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                        ex quos. Alias a rem maiores
-                            </p>
-                                </div>
-                                <div className="b-discover">
-                                    <a href="/" className="b-link">Discover Now <i className="fas fa-arrow-right" /></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="b-slider-item" >
-                    <div className="b-overload" style={{ backgroundImage: 'url("../../images/bg-img/1.jpg")' }}>
+                                <div className="b-entertaiment">
+                                    <div className="b-block-content">
+                                        <h3 className="b-text-name">
+                                            {data.name}
+                                        </h3>
+                                        <h2 className="b-text-title">
+                                            {data.type_tour}
+                                        </h2>
 
-                        <div className="b-content">
-                            <div className="b-overlay">
-                                <div className="b-info">
-                                    <h2 className="b-text-title">
-                                        Entertaiment
-                            </h2>
-                                    <h3 className="b-text-name">
-                                        Racing Bike
-                            </h3>
-                                </div>
-                            </div>
-                            <div className="b-entertaiment">
-                                <div className="b-block-content">
-                                    <h3 className="b-text-name">
-                                        Entertaiment
-                            </h3>
-                                    <h2 className="b-text-title">
-                                        Eacing Bike
-                            </h2>
-                                    <p className="b-text-norm">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, ex quos. Alias a rem maiores,
-                                        possimus dicta sit distinctio quis im ipsum dolor sit amet, consectetur adipisicing elit. Dolor,
-                                        ex quos. Alias a rem maiores
-                            </p>
-                                </div>
-                                <div className="b-discover">
-                                    <a href="/" className="b-link">Discover Now <i className="fas fa-arrow-right" /></a>
+
+                                    </div>
+                                    <div className="b-discover">
+                                        <Link to={'/tour/' + data.id} onClick={this.onViews.bind(this,data.reviews, data.id)} className="b-link">Discover Now <i className="fas fa-arrow-right" /></Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                ))}
+
+
             </Slider>
         );
     }

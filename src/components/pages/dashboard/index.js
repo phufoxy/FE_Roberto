@@ -11,4 +11,7 @@ import SliderPage from './slider/SliderPage';
 import BlogPage from './blog/BlogPage';
 import BlogDetailPage from './blog/details/BlogDetailPage';
 import TourImages from './tour/TourImages';
-export { TourImages, BlogDetailPage, BlogPage, SliderPage, TourDetailPage, TourPage, RestaurantDetailPage, HomePage, PlacePage, PlaceDetailPage, HousePage, HouseDetailPage, RestaurantPage };
+import UserPage from './user/UserPage';
+import BookTourPage from './tour/BookTourPage';
+import FeedBackPage from './feedback/FeedBackPage';
+export { FeedBackPage, BookTourPage, UserPage, TourImages, BlogDetailPage, BlogPage, SliderPage, TourDetailPage, TourPage, RestaurantDetailPage, HomePage, PlacePage, PlaceDetailPage, HousePage, HouseDetailPage, RestaurantPage };

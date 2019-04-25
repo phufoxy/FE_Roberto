@@ -11,6 +11,8 @@ import TourDetailReducer from './tourdetail';
 import SliderReducer from './slider';
 import BlogReducer from './blog';
 import BlogDetailReducer from './blogdetail';
+import UserReducer from './user';
+import BookTourReducer from './booktour';
 const rootReducer = combineReducers({
     login: LoginReducer,
     place: PlaceReducer,
@@ -23,6 +25,8 @@ const rootReducer = combineReducers({
     tourdetail: TourDetailReducer,
     slider: SliderReducer,
     blog: BlogReducer,
-    blogdetail: BlogDetailReducer
+    blogdetail: BlogDetailReducer,
+    user: UserReducer,
+    booktour: BookTourReducer
 });
 export default rootReducer;

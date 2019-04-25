@@ -12,4 +12,13 @@ import BlogItemComponent from './blog/item/BlogItemComponent'
 import TagComponent from './tags/TagComponent';
 import InstagramComponent from './instagram/InstagramComponent'
 import TourItem from './tour/TourItem';
-export { TourItem, InstagramComponent, TagComponent, BlogItemComponent, RecentComponent, SliderDetailComponent, ContactComponent, BlogComponent, BannerComponent, AboutComponent, ServiceComponent, KingComponent, TestimonialsComponent, FeatureComponent };
+import FormItem from './tour/FormItem';
+import HeroComponent from './hero/HeroComponent';
+import ToggleBoxComponent from './toggleBox/ToggleBoxComponent';
+import BookComponent from './book/BookComponent';
+import InfoComponent from './info/InfoComponent';
+import ConfirmComponent from './confirm/ConfirmComponent';
+import FormComment from './formcomment/FormComment';
+import CommentItemComponent from './commentItem/CommentItemComponent';
+import ProfileComponent from './profile/ProfileComponent';
+export { ProfileComponent, CommentItemComponent, FormComment, ConfirmComponent, InfoComponent, BookComponent, ToggleBoxComponent, HeroComponent, FormItem, TourItem, InstagramComponent, TagComponent, BlogItemComponent, RecentComponent, SliderDetailComponent, ContactComponent, BlogComponent, BannerComponent, AboutComponent, ServiceComponent, KingComponent, TestimonialsComponent, FeatureComponent };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
+var NumberFormat = require('react-number-format');
 
 class KingComponent extends Component {
     render() {
@@ -15,62 +16,40 @@ class KingComponent extends Component {
         return (
             <section className="b-page-king">
                 <Slider {...settings} className="b-slider-center">
-                    <div className="b-slider-item">
-                        <div className="b-block">
-                            <div className="b-block-left" style={{ backgroundImage: 'url("./images/bg-img/7.jpg")' }}>
-                            </div>
-                            <div className="b-block-right">
-                                <div className="b-content ">
-                                    <div className="b-info ">
-                                        <h2 className="b-text-title wow fadeInUp">Best King Room</h2>
-                                        <h4 className="b-text-price wow fadeInUp">125$ <span className="is-current">/Day</span> </h4>
+                    {
+                        this.props.data.map(data => (
+                            <div className="b-slider-item" key={data.id}>
+                                <div className="b-block">
+                                    <div className="b-block-left" style={{ backgroundImage: `url(http://127.0.0.1:8000${data.images})` }}>
                                     </div>
-                                    <div className="b-list wow fadeInUp">
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="b-slider-item">
-                        <div className="b-block">
-                            <div className="b-block-left" style={{ backgroundImage: 'url("./images/bg-img/1.jpg")' }}>
-                            </div>
-                            <div className="b-block-right">
-                                <div className="b-content ">
-                                    <div className="b-info ">
-                                        <h2 className="b-text-title wow fadeInUp">Best King Room</h2>
-                                        <h4 className="b-text-price wow fadeInUp">125 <span className="is-current">/Day</span> </h4>
-                                    </div>
-                                    <div className="b-list wow fadeInUp">
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
-                                        </div>
-                                        <div className="b-item">
-                                            <p className="b-text-norm">Size <span className="is-current">30ft</span></p>
+                                    <div className="b-block-right">
+                                        <div className="b-content ">
+                                            <div className="b-info ">
+                                                <h2 className="b-text-title wow fadeInUp">{data.name}</h2>
+                                                <NumberFormat value={data.price} displayType={'text'} thousandSeparator={true} renderText={value => 
+                                                     <h4 className="b-text-price wow fadeInUp">{value}₫ <span className="is-current"></span> </h4>
+                                                     } />
+                                            </div>
+                                            <div className="b-list wow fadeInUp">
+                                                <div className="b-item">
+                                                    <p className="b-text-norm">Số Ngày <span className="is-current">{data.date} Ngày</span></p>
+                                                </div>
+                                                <div className="b-item">
+                                                    <p className="b-text-norm">Số Lượng Còn <span className="is-current">{data.total} Người</span></p>
+                                                </div>
+                                                <div className="b-item">
+                                                    <p className="b-text-norm">Thể Loại <span className="is-current">{data.type_tour}</span></p>
+                                                </div>
+                                                <div className="b-item">
+                                                    <p className="b-text-norm">Địa Điểm Bắt Đầu <span className="is-current">{data.location}</span></p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
+                        ))
+                    }
                 </Slider>
             </section>
         );
